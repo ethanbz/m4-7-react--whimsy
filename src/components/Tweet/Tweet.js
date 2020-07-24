@@ -12,6 +12,13 @@ const propTypes = {
   username: PropTypes.string.isRequired,
   avatarSrc: PropTypes.string.isRequired,
   tweetContents: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  numOfRetweets: PropTypes.number.isRequired,
+  numOfLikes: PropTypes.number.isRequired,
+  isLikedByCurrentUser: PropTypes.bool.isRequired,
+  isRetweetedByCurrentUser: PropTypes.bool.isRequired,
+  handleToggleLike: PropTypes.func.isRequired,
+  handleToggleRetweet: PropTypes.func.isRequired,
 };
 
 const Tweet = ({
@@ -26,6 +33,7 @@ const Tweet = ({
   isRetweetedByCurrentUser,
   handleToggleLike,
   handleToggleRetweet,
+
 }) => {
   return (
     <Wrapper>
@@ -38,7 +46,12 @@ const Tweet = ({
       </Header>
 
       <TweetContents>{tweetContents}</TweetContents>
-
+      <Timestamp>{timestamp}</Timestamp>
+      <Divider />
+        <Stats>
+        <Stats>{numOfRetweets} Retweets</Stats>
+        <Stats>{numOfLikes} Likes</Stats>
+        </Stats>
       <Divider />
 
       <Actions>
